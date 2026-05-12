@@ -16,6 +16,8 @@ class Except:
             
         except (FileNotFoundError, ValueError) as e:
             print(e)  
+        except pd.errors.ParserError:
+            print('Ошибка парсинга: файл не является корректной таблицей')
         except Exception:
             print('Не удалось открыть файл')
 
@@ -39,8 +41,7 @@ class Except:
             print('Файл не был открыт')
         except TypeError:
             print('Неправильная структура файла: ожидается таблица, а получен текст')
-        except pd.errors.ParserError:
-            print('Ошибка парсинга: файл не является корректной таблицей')
+        
 
     def check_header(self, expected_columns):
         try:
